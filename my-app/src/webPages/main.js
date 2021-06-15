@@ -7,12 +7,14 @@ class MainPage extends React.Component{
         return(
             <React.Fragment> 
                 <div class="header">
-                    {/* <a href="#default"><img src={require("./../images/computerlogo.jpg").default}/></a> */}
-                <div class="header-right">
-                    <a class="active" href="#home">Home</a>
-                    <a class="active" href="#contact">Add Content</a>
-                    <a class="active" href="#about">About</a>
-                    </div>
+                     <a href="#default"><img class='logo'src={require("./../images/computerlogo.jpg").default}/></a> 
+
+                    <ul class="nav-container">
+                    <li><a class="active" href="#home">Home</a></li>
+                    <li><a class="active" href="#contact">Add Content</a></li>
+                    <li><a class="active" href="#about">About</a></li>
+                    </ul>
+                    
                     </div>
 
 <div class="wallPaper">
