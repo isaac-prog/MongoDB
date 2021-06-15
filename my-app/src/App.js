@@ -1,5 +1,5 @@
 import './App.css';
-import MainPage from './main.js'
+import MainPage from './webPages/main.js'
 import React from 'react';
 
 
