@@ -14,22 +14,19 @@ body {
   left: 0;
   width:100%;
   overflow: hidden;
-  background-color: black;
+  background-color: #050505;
   padding: 20px 10px;
   justify-content: space-between;
-  align-items: center;
-  z-index: 999;
 }
 
 .header a {
   display: block;
-  float: left;
-  text-align: center;
+  text-align: left;
   padding: 12px;
   text-decoration: none;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 15px;
+  line-height: 5px;
   color: white;
 }
 
@@ -102,6 +99,7 @@ table {
   color: white;
   width: 100%;
   padding-top: 25px;
+  border-spacing: 0px;
 }
 
 th {
