@@ -6,6 +6,9 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #050505;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .header {
@@ -25,7 +28,7 @@ body {
   padding: 12px;
   text-decoration: none;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 5px;
   color: white;
 }
@@ -95,10 +98,38 @@ a.active:hover:before {
 
 }
 
+#flex-container {
+  display: flex;
+  flex: 1;
+}
+.result-container {
+  flex: 1;
+}
+
+.filter-container{
+  order: -1;
+  flex: 0 0 10vw;
+  background: black;
+  color: white;
+  border: solid white 1px;
+}
+
+.result-container{
+  background-color: black;
+  color: white
+}
+footer {
+  background: black;
+  height: 10vh;
+  color: white;
+}
+footer, .filter-container {
+  padding: 1em;
+}
+
 table {
   color: white;
   width: 100%;
-  padding-top: 25px;
   border-spacing: 0px;
 }
 
@@ -113,4 +144,20 @@ td {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.flex-container {
+  display: flex;
+  align-items: stretch;
+  background-color: #f1f1f1;
+}
+
+.flex-container > div {
+  background-color: DodgerBlue;
+  color: white;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
 
