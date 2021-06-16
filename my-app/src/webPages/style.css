@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #050505;
+  background-color: #0f0f0f;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -17,8 +17,8 @@ body {
   left: 0;
   width:100%;
   overflow: hidden;
-  background-color: #050505;
-  padding: 20px 10px;
+  background-color: #121212;
+  padding: 10px 10px;
   justify-content: space-between;
 }
 
@@ -108,7 +108,7 @@ a.active:hover:before {
 
 .filter-container{
   order: -1;
-  flex: 0 0 10vw;
+  flex: 0 0 15vw;
   background: black;
   color: white;
   border: solid white 1px;
