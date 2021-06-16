@@ -14,14 +14,15 @@ class MainPage extends React.Component{
                     <li><a class="active" href="#contact">Add Content</a></li>
                     <li><a class="active" href="#about">About</a></li>
                     </ul>
-                    
+
                     </div>
 
 <div class="wallPaper">
     <img class="image_center" src={require("./../images/computerCase.jpg").default}/>
 </div> 
 
-<table>
+<div id="flex-container">
+    <div class="result-container"><table>
   <tr>
     <th></th>
     <th>Name</th>
@@ -34,10 +35,13 @@ class MainPage extends React.Component{
     <td>Smith</td>
     <td>50</td>
   </tr>
-</table>
+</table></div>
+    <div class="filter-container">Filter</div>
+  </div>
+<footer>Footer</footer>
 
 
-    </React.Fragment>
+            </React.Fragment>
         )
     }
 }

@@ -106,6 +106,11 @@ a.active:hover:before {
   flex: 1;
 }
 
+.result-images{
+  width: 50px; 
+  height: 50px;
+}
+
 .filter-container{
   order: -1;
   flex: 0 0 15vw;
@@ -114,6 +119,12 @@ a.active:hover:before {
   border: solid white 1px;
 }
 
+h3{
+  border-bottom: 1px solid white
+}
+.filter-segments{
+  border-bottom: 0.5px dotted white;
+}
 .result-container{
   background-color: black;
   color: white
