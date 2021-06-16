@@ -2,6 +2,8 @@ import React from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
+import { faLinkedin } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function MainPage() {
     return (
@@ -31,6 +33,76 @@ export default function MainPage() {
                 </div>
             </Carousel>
         </div>
+
+      <div class="parts-directory">
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>CPU</h4>
+      <img class="directory-images" src={require("./../images/CPU.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>Graphics</h4>
+      <img class="directory-images" src={require("./../images/Graphics.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>Memory</h4>
+      <img class="directory-images" src={require("./../images/ram.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>Motherboard</h4>
+      <img class="directory-images" src={require("./../images/motherboard.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>PSU</h4>
+      <img class="directory-images" src={require("./../images/PSU.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>Storage</h4>
+      <img class="directory-images" src={require("./../images/ssd.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>Cooler</h4>
+      <img class="directory-images" src={require("./../images/fan.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      <div class="flex-directory">
+      <div class="flex-directory-body"><h4>Case</h4>
+      <img class="directory-images" src={require("./../images/case.jpg").default} alt="CPU"/>
+      
+      </div>
+      </div>
+
+      </div>
+
+      <footer>
+      footer
+      <i class="fa fa-facebook-official"></i>
+      <i class="fa fa-instagram"></i>
+      <i class="fa fa-snapchat"></i>
+      <i class="fa fa-pinterest-p"></i>
+      <i class="fa fa-twitter"></i>
+      <i class="fa fa-linkedin"></i>
+      </footer>
       </React.Fragment>
     );
 }

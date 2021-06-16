@@ -177,3 +177,46 @@ td {
 .carousel .slide img {
   width: 50%;
 }
+
+.carousel .carousel-status {
+  display: none;
+}
+
+.parts-directory{
+  display: flex;
+  flex-wrap: wrap;  
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.flex-directory{
+  margin: 15px !important;
+  background-color:#252525;
+  border: solid 0.5px grey;
+}
+.flex-directory-body{
+padding-bottom:0px;
+padding-top:5px;
+text-align:center !important;
+color:white
+}
+
+.flex-directory-body h4{
+  color:white;
+  font-size:15px;
+  text-transform:uppercase;
+  margin:10px;
+  }
+
+.directory-images{
+  width:250px;
+  height:250px;
+}
+
+.flex-directory:hover{box-shadow: 0 0 15px #ff0000;cursor:pointer}
+.flex-directory:hover h4{text-decoration:none;color: lightblue}
+
+footer{
+  color:white
+}
