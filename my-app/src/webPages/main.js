@@ -1,124 +1,36 @@
-import React from 'react'
+import React from "react";
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
-import axios from 'axios'
 
+export default function MainPage() {
+    return (
 
-class MainPage extends React.Component{
+      <React.Fragment> 
+      <div class="header">
+           <a href="#default"><img class='logo'src={require("./../images/computerlogo.jpg").default}/></a> 
 
-  state={
-    name: '',
-    fruits: [],
-}
+          <ul class="nav-container">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a class="active" href="#contact">Add Content</a></li>
+          <li><a class="active" href="#about">About</a></li>
+          </ul>
 
-fruits=[
-  {
-      'display':'Apple',
-      'value':'apple'},
-      {
-          'display':'Banana',
-          'value': 'banana'
-      },
-      {
-          'display': 'Cherries',
-          'value': 'cherries'
-      }
-  ]
+          </div>
 
-  updateFormField = (event) => {
-    this.setState({
-        [event.target.name]: event.target.value,
-    })
-}
-
-updateCheckBox= (event) =>{
-    let currentValues= this.state[event.target.name];
-    let modifiedValues;
-    if (!currentValues.includes(event.target.value))
-    {
-        modifiedValues = [...currentValues, event.target.value];
-    }
-    else{
-        modifiedValues = currentValues.filter((element)=>{
-            return element !== event.target.value;
-        })
-    
-    }
-    this.setState({
-        fruits: modifiedValues
-    })
-}
-
-componentDidMount() {
-  axios.get('./fruits.json').then(r=>{this.fruits=r.data});
-}
-
-
-    render(){
-        return(
-            <React.Fragment> 
-                <div class="header">
-                     <a href="#default"><img class='logo'src={require("./../images/computerlogo.jpg").default}/></a> 
-
-                    <ul class="nav-container">
-                    <li><a class="active" href="#home">Home</a></li>
-                    <li><a class="active" href="#contact">Add Content</a></li>
-                    <li><a class="active" href="#about">About</a></li>
-                    </ul>
-
-                    </div>
-
-<div class="wallPaper">
-    <img class="image_center" src={require("./../images/computerCase.jpg").default}/>
-</div> 
-
-{/* table */}
-<div id="flex-container">
-    <div class="result-container">
-      <table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Type</th> 
-    <th>Color</th>
-    <th>Brand</th>
-  </tr>
-
-  <tr>
-    <td><img class="result-images" src={require("./../images/caseSample.jpg").default}/></td>
-    <td>Tron III</td>
-    <td>Mid Tower</td>
-    <td>Black</td>
-    <td>Armageddon</td>
-  </tr>
-</table></div>
-
-{/* filter box */}
-    <div class="filter-container">
-      <h3>Filters</h3>
-      <h4>Case type</h4>
-      <div class="filter-segments">
-      {this.fruits.map((f)=>(
-	        <React.Fragment>
-		         <input type="checkbox" 
-			        key={f.value}
-			        name="fruits" 
-			        value={f.value}
-			        checked={this.state.fruits.includes(f.value)}
-			        onChange={this.updateCheckBox}/>
-              <span>{f.display}</span><br/>
-	        </React.Fragment>
-          ))}
+        <div class="carousel-wrapper">
+            <Carousel infiniteLoop useKeyboardArrows autoPlay>
+                <div>
+                    <img class="carousel-image" src="../pcCarousel1.jpg" />
+                </div>
+                <div>
+                    <img class="carousel-image" src="../pcCarousel2.jpg" />
+                </div>
+                <div>
+                    <img class="carousel-image" src="../pcCarousel3.jpg" />
+                </div>
+            </Carousel>
         </div>
-     </div>
-
-</div>
-  
-<footer>Footer</footer>
-
-
-            </React.Fragment>
-        )
-    }
+      </React.Fragment>
+    );
 }
-
-export default MainPage
