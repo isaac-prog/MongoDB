@@ -3,7 +3,7 @@ import './style.css'
 import axios from 'axios'
 
 
-class MainPage extends React.Component{
+class CasePage extends React.Component{
 
   state={
     name: '',
@@ -52,11 +52,9 @@ componentDidMount() {
   axios.get('./fruits.json').then(r=>{this.fruits=r.data});
 }
 
-
     render(){
         return(
             <React.Fragment> 
-
 <div class="wallPaper">
     <img class="image_center" src={require("./../images/computerCase.jpg").default}/>
 </div> 

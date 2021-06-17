@@ -2,6 +2,7 @@ import './App.css';
 import MainPage from './webPages/main.js'
 import CasePage from './webPages/case';
 import React from 'react';
+import './webPages/style.css'
 
 
 class App extends React.Component {
