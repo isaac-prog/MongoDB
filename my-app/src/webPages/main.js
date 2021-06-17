@@ -2,7 +2,6 @@ import React from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
-import { faLinkedin } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function MainPage() {
@@ -95,13 +94,9 @@ export default function MainPage() {
       </div>
 
       <footer>
-      footer
-      <i class="fa fa-facebook-official"></i>
-      <i class="fa fa-instagram"></i>
-      <i class="fa fa-snapchat"></i>
-      <i class="fa fa-pinterest-p"></i>
-      <i class="fa fa-twitter"></i>
-      <i class="fa fa-linkedin"></i>
+      ✉
+      ☏
+      🖶
       </footer>
       </React.Fragment>
     );
