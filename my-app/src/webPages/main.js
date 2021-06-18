@@ -2,18 +2,24 @@ import React from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
+import CPUPage from "./cpu.js"
+import GraphicsPage from "./graphics.js"
+import RAMPage from "./ram.js"
+import MOBOPage from "./mobo.js"
+import PSUPage from "./psu.js"
+import StoragePage from "./storage.js"
+import CoolerPage from "./cooler.js"
+import CasePage from "./case.js"
 
-export default class MainPage extends React.Component{
+class MainPage extends React.Component{
     state = {
         "page": ""
       }
-    
       pageHandler(name) {
         this.setState({
           page: name
         })
       }
-
     render(){
         return (
             <React.Fragment> 
@@ -89,15 +95,6 @@ export default class MainPage extends React.Component{
             </div>
       
             </div>
-            
-            {this.state.page === "CPU" ? <CPU /> : ""}
-            {this.state.page === "Graphics" ? <Graphics /> : ""}
-            {this.state.page === "RAM" ? <RAM /> : ""}
-            {this.state.page === "MOBO" ? <MOBO /> : ""}
-            {this.state.page === "PSU" ? <MainPage /> : ""}
-            {this.state.page === "Storage" ? <Storage /> : ""}
-            {this.state.page === "Cooler" ? <Cooler /> : ""}
-            {this.state.page === "Case" ? <Case /> : ""}
       
             <footer>
             ✉
@@ -105,8 +102,17 @@ export default class MainPage extends React.Component{
             🖶
             </footer>
             
+            {this.state.page === "CPU" ? <CPUPage/> : ""}
+            {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
+            {this.state.page === "RAM" ? <RAMPage/> : ""}
+            {this.state.page === "MOBO" ? <MOBOPage/> : ""}
+            {this.state.page === "PSU" ? <PSUPage/> : ""}
+            {this.state.page === "Storage" ? <StoragePage/> : ""}
+            {this.state.page === "Cooler" ? <CoolerPage/> : ""}
+            {this.state.page === "Case" ? <CasePage/> : ""}
             </React.Fragment>
           );
     }
-    
 }
+
+export default MainPage

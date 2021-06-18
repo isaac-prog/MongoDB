@@ -33,7 +33,7 @@ body {
   color: white;
 }
 
-.header:hover{
+.header a:hover{
   cursor:pointer
 }
 .nav-container{
