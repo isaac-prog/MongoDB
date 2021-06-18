@@ -98,7 +98,7 @@ async componentDidMount() {
     {this.state.data.map(c => {
          return (
           <tr>
-            <td><img class="result-images" src={require("./../images/caseSample.jpg").default}/></td>
+            <td><img class="result-images" src={c.image}/></td>
             <td>{c.name}</td>
             <td>{c.type}</td>
             <td>{c.color}</td>
