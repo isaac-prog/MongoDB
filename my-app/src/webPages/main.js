@@ -13,7 +13,7 @@ import CasePage from "./case.js"
 
 class MainPage extends React.Component{
     state = {
-        "page": ""
+        "page": "home"
       }
       pageHandler(name) {
         this.setState({
@@ -23,7 +23,10 @@ class MainPage extends React.Component{
     render(){
         return (
             <React.Fragment> 
-              <div class="carousel-wrapper">
+
+            {this.state.page == "home" ?
+            <React.Fragment>
+                            <div class="carousel-wrapper">
                   <Carousel infiniteLoop useKeyboardArrows autoPlay>
                       <div>
                           <img class="carousel-image" src="../pcCarousel1.jpg" />
@@ -36,7 +39,7 @@ class MainPage extends React.Component{
                       </div>
                   </Carousel>
               </div>
-      
+            
             <div class="parts-directory">
       
             <div class="flex-directory" onClick={() => this.pageHandler("CPU")}>
@@ -94,13 +97,10 @@ class MainPage extends React.Component{
             </div>
             </div>
       
-            </div>
+            </div></React.Fragment> : ""
+            }
       
-            <footer>
-            ✉
-            ☏
-            🖶
-            </footer>
+
             
             {this.state.page === "CPU" ? <CPUPage/> : ""}
             {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
@@ -110,6 +110,12 @@ class MainPage extends React.Component{
             {this.state.page === "Storage" ? <StoragePage/> : ""}
             {this.state.page === "Cooler" ? <CoolerPage/> : ""}
             {this.state.page === "Case" ? <CasePage/> : ""}
+
+            <footer>
+            ✉
+            ☏
+            🖶
+            </footer>
             </React.Fragment>
           );
     }
