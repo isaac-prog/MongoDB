@@ -2,14 +2,14 @@ import React from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
-// import CreateCPUPage from "./CreateCpu.js"
-// import CreateGraphicsPage from "./CreateGraphics.js"
-// import CreateRAMPage from "./CreateRam.js"
-// import CreateMOBOPage from "./CreateMobo.js"
-// import CreatePSUPage from "./CreatePsu.js"
-// import CreateStoragePage from "./CreateStorage.js"
-// import CreateCoolerPage from "./CreateCooler.js"
-// import CreateCasePage from "./CreateCase.js"
+import CreateCPUPage from "./CreateCpu.js"
+import CreateGraphicsPage from "./CreateGraphics.js"
+import CreateRAMPage from "./CreateRam.js"
+import CreateMOBOPage from "./CreateMobo.js"
+import CreatePSUPage from "./CreatePsu.js"
+import CreateStoragePage from "./CreateStorage.js"
+import CreateCoolerPage from "./CreateCooler.js"
+import CreateCasePage from "./CreateCase.js"
 
 class CreatePage extends React.Component{
     state = {
@@ -91,14 +91,14 @@ class CreatePage extends React.Component{
       
 
             
-            {/* {this.state.page === "CreateCPU" ? <CreateCPUPage/> : ""}
+            {this.state.page === "CreateCPU" ? <CreateCPUPage/> : ""}
             {this.state.page === "CreateGraphics" ? <CreateGraphicsPage/> : ""}
             {this.state.page === "CreateRAM" ? <CreateRAMPage/> : ""}
             {this.state.page === "CreateMOBO" ? <CreateMOBOPage/> : ""}
             {this.state.page === "CreatePSU" ? <CreatePSUPage/> : ""}
             {this.state.page === "CreateStorage" ? <CreateStoragePage/> : ""}
             {this.state.page === "CreateCooler" ? <CreateCoolerPage/> : ""}
-            {this.state.page === "CreateCase" ? <CreateCasePage/> : ""} */}
+            {this.state.page === "CreateCase" ? <CreateCasePage/> : ""}
 
             <footer>
             ✉
