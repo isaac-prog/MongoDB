@@ -2,6 +2,7 @@ import React from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
+import CreatePage from "./create.js"
 import CPUPage from "./cpu.js"
 import GraphicsPage from "./graphics.js"
 import RAMPage from "./ram.js"
@@ -22,7 +23,15 @@ class MainPage extends React.Component{
       }
     render(){
         return (
-            <React.Fragment> 
+          <React.Fragment >
+                    <div class="header">                      
+                 <a onClick={() => this.pageHandler("home")} href="#default"><img class='logo'src={require("../images/computerlogo.jpg").default}/></a> 
+                <ul class="nav-container">
+                <li onClick={() => this.pageHandler("home")}><a class="active">Home</a></li>
+                <li onClick={() => this.pageHandler("create")}><a class="active">Add Content</a></li>
+                <li><a class="active">About</a></li>
+                </ul>
+                </div>
 
             {this.state.page == "home" ?
             <React.Fragment>
@@ -101,7 +110,7 @@ class MainPage extends React.Component{
             }
       
 
-            
+            {this.state.page === "create" ? <CreatePage /> : ""}
             {this.state.page === "CPU" ? <CPUPage/> : ""}
             {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
             {this.state.page === "RAM" ? <RAMPage/> : ""}

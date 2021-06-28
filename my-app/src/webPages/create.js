@@ -1,17 +1,15 @@
 import React from "react";
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
-import CreateCPUPage from "./CreateCpu.js"
-import CreateGraphicsPage from "./CreateGraphics.js"
-import CreateRAMPage from "./CreateRam.js"
-import CreateMOBOPage from "./CreateMobo.js"
-import CreatePSUPage from "./CreatePsu.js"
-import CreateStoragePage from "./CreateStorage.js"
-import CreateCoolerPage from "./CreateCooler.js"
+// import CreateCPUPage from "./CreateCpu.js"
+// import CreateGraphicsPage from "./CreateGraphics.js"
+// import CreateRAMPage from "./CreateRam.js"
+// import CreateMOBOPage from "./CreateMobo.js"
+// import CreatePSUPage from "./CreatePsu.js"
+// import CreateStoragePage from "./CreateStorage.js"
+// import CreateCoolerPage from "./CreateCooler.js"
 import CreateCasePage from "./CreateCase.js"
 
-class CreatePage extends React.Component{
+export default class CreatePage extends React.Component{
     state = {
         "page": "createPage"
       }
@@ -24,11 +22,10 @@ class CreatePage extends React.Component{
         return (
             <React.Fragment> 
 
-            <h1>Select a category</h1>
-
             {this.state.page == "createPage" ?
             <React.Fragment>
             
+            <h1>Select a category to add</h1>
             <div class="parts-directory">
       
             <div class="flex-directory" onClick={() => this.pageHandler("CreateCPU")}>
@@ -91,13 +88,13 @@ class CreatePage extends React.Component{
       
 
             
-            {this.state.page === "CreateCPU" ? <CreateCPUPage/> : ""}
+            {/* {this.state.page === "CreateCPU" ? <CreateCPUPage/> : ""}
             {this.state.page === "CreateGraphics" ? <CreateGraphicsPage/> : ""}
             {this.state.page === "CreateRAM" ? <CreateRAMPage/> : ""}
             {this.state.page === "CreateMOBO" ? <CreateMOBOPage/> : ""}
             {this.state.page === "CreatePSU" ? <CreatePSUPage/> : ""}
             {this.state.page === "CreateStorage" ? <CreateStoragePage/> : ""}
-            {this.state.page === "CreateCooler" ? <CreateCoolerPage/> : ""}
+            {this.state.page === "CreateCooler" ? <CreateCoolerPage/> : ""} */}
             {this.state.page === "CreateCase" ? <CreateCasePage/> : ""}
 
             <footer>
@@ -110,4 +107,3 @@ class CreatePage extends React.Component{
     }
 }
 
-export default MainPage
