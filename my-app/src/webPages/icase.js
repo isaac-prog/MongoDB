@@ -17,24 +17,6 @@ export default class Listing extends React.Component {
   })
 }
 
-updateCheckBox= (event) =>{
-  let currentValues= this.state[event.target.name];
-  let modifiedValues;
-  if (!currentValues.includes(event.target.value))
-  {
-      modifiedValues = [...currentValues, event.target.value];
-  }
-  else{
-      modifiedValues = currentValues.filter((element)=>{
-          return element !== event.target.value;
-      })
-  
-  }
-  this.setState({
-      Case: modifiedValues
-  })
-}
-
 async componentDidMount() {
   let response = await axios.get(this.url + "case");
 
@@ -79,9 +61,7 @@ async componentDidMount() {
  render() {
    return (
      <React.Fragment>
-       <div class="wallPaper">
-          <img class="image_center" src={require("./../images/computerCase.jpg").default}/>
-       </div>
+       
 
        {/* table */}
 <div id="flex-container">
@@ -146,9 +126,8 @@ async componentDidMount() {
           ))}
         </div>
 
-        <button onClick={{}}>Filter</button>
      </div>
-    </div>
+</div>
      </React.Fragment>
    );
  }

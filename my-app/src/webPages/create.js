@@ -46,7 +46,7 @@ export default class CreatePage extends React.Component{
             <div class="flex-directory-body"><h4>Memory</h4>
             <img class="directory-images" src={require("./../images/ram.jpg").default} alt="RAM"/>
             </div>
-            
+  
             </div>
       
             <div class="flex-directory" onClick={() => this.pageHandler("CreateMOBO")}>
