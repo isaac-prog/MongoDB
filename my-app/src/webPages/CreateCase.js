@@ -1,12 +1,18 @@
 import React from 'react'
 import axios from 'axios'
+import './style.css'
 
 export default class CreateCasePage extends React.Component{
     url = "https://3000-gray-worm-b5s136s0.ws-us09.gitpod.io/"
 
     state= {
-        tasks:[],
-        newTaskName: "",
+        case:[],
+        newCaseName: "",
+        newCaseType: "",
+        newCaseColor: "",
+        newCaseDescription: "",
+        newCaseBrand: "",
+        newCaseImage: "",
         taskBeingEdited: 0,
         modifiedTaskName: ""
     }
@@ -18,38 +24,106 @@ export default class CreateCasePage extends React.Component{
     }
 
     async componentDidMount() {
-        let response = await axios.get(this.url + "tasks/create");
+        let response = await axios.get(this.url + "case/create");
 }
     
-    addTask = async (e) => {
-        let newTask = {
-            'description': this.state.newTaskName,
-            'done': false
+    addCase = async (e) => {
+        let newCase = {
+            'name':this.state.newCaseName,
+            'type':this.state.newCaseType,
+            'color':this.state.newCaseColor,
+            'description':this.state.newCaseDescription,
+            'brand':this.state.newCaseBrand,
+            'image':this.state.newCaseImage
         }
-        console.log(newTask)
-        let response = await axios.post(this.url + "tasks/create", newTask);
-        let currentValues = this.state.tasks;
-        let modifiedValues = [...currentValues, newTask];
+        console.log(newCase)
+        let response = await axios.post(this.url + "case/create", newCase);
+        let currentValues = this.state.case;
+        let modifiedValues = [...currentValues, newCase];
         this.setState({
-            'tasks': modifiedValues,
-            'newTaskName': ''
+            'case': modifiedValues,
+            'newCaseName': '',
+            'newCaseType':'',
+            'newCaseColor':'',
+            'newCaseDescription':'',
+            'newCaseBrand':'',
+            'newCaseImage':''
         })
     }
+
+    displayCase = t => {
+        return (
+            <li key={t.id}>
+                {t.type}
+                <input
+                    type="radio"
+                    value={t.type === true}
+                    onChange={() => {
+                        this.checkCase(t.id);
+                    }}
+                />
+            </li>
+        );
+    };
     
     render() {
         return (
             <React.Fragment>
-                <h2>Create new Task</h2>
+                <div class="create-edit-field">
+                <h2>Create new case</h2>
             <div>
-                <label>Task Description</label>
+                <label>Case name</label><br/>
                 <input
                     type="text"
-                    name="newTaskName"
-                    value={this.state.newTaskName}
+                    name="newCaseName"
+                    value={this.state.newCaseName}
                     onChange={this.updateFormField}
-                />
-                <button onClick={this.addTask}>Add</button>
-            </div>
+                /><br/><br/>
+
+                <label>Case type</label><br/>
+                <input
+                    type="text"
+                    name="newCaseType"
+                    value={this.state.newCaseType}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+                
+                <label>Case Color</label><br/>
+                <input
+                    type="text"
+                    name="newCaseColor"
+                    value={this.state.newCaseColor}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case brand</label><br/>
+                <input
+                    type="text"
+                    name="newCaseBrand"
+                    value={this.state.newCasebrand}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case image (URL ONLY)</label><br/>
+                <input
+                    type="text"
+                    name="newCaseImage"
+                    value={this.state.newCaseImage}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case description</label><br/>
+                <input class="description-textbox"
+                    type="text"
+                    name="newCaseDescription"
+                    value={this.state.newCaseDescription}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <button onClick={this.addCase}>Add</button>
+                </div><br/>
+
+                </div>
             </React.Fragment>
         )
     }

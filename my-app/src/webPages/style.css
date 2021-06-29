@@ -225,6 +225,20 @@ color:white
 .flex-directory:hover{box-shadow: 0 0 15px #ff0000;cursor:pointer}
 .flex-directory:hover h4{text-decoration:none;color: lightblue}
 
+.create-edit-field{
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+}
+.description-textbox{
+  height: 200px;
+  width:200px;
+}
+
+label{
+  color:white;
+}
+
 footer{
   color:white
 }
