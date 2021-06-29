@@ -1,6 +1,5 @@
 import './App.css';
 import MainPage from './webPages/main.js'
-import CreatePage from './webPages/create.js';
 import React from 'react';
 import './webPages/style.css'
 

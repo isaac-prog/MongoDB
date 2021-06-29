@@ -3,6 +3,7 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './style.css'
 import CreatePage from "./create.js"
+import EditPage from "./edit.js"
 import CPUPage from "./cpu.js"
 import GraphicsPage from "./graphics.js"
 import RAMPage from "./ram.js"
@@ -16,7 +17,7 @@ class MainPage extends React.Component{
     state = {
         "page": "home"
       }
-      pageHandler(name) {
+      pageHandler = (name) => {
         this.setState({
           page: name
         })
@@ -29,7 +30,7 @@ class MainPage extends React.Component{
                 <ul class="nav-container">
                 <li onClick={() => this.pageHandler("home")}><a class="active">Home</a></li>
                 <li onClick={() => this.pageHandler("create")}><a class="active">Add Content</a></li>
-                <li><a class="active">About</a></li>
+                <li onClick={() => this.pageHandler("edit")}><a class="active">Edit Content</a></li>
                 </ul>
                 </div>
 
@@ -111,6 +112,7 @@ class MainPage extends React.Component{
       
 
             {this.state.page === "create" ? <CreatePage /> : ""}
+            {this.state.page === "Edit" ? <EditPage /> : ""}
             {this.state.page === "CPU" ? <CPUPage/> : ""}
             {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
             {this.state.page === "RAM" ? <RAMPage/> : ""}
@@ -118,7 +120,7 @@ class MainPage extends React.Component{
             {this.state.page === "PSU" ? <PSUPage/> : ""}
             {this.state.page === "Storage" ? <StoragePage/> : ""}
             {this.state.page === "Cooler" ? <CoolerPage/> : ""}
-            {this.state.page === "Case" ? <CasePage/> : ""}
+            {this.state.page === "Case" ? <CasePage pageHandler={this.pageHandler}/> : ""}
 
             <footer>
             ✉

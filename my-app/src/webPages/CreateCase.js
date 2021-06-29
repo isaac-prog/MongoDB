@@ -3,7 +3,7 @@ import axios from 'axios'
 import './style.css'
 
 export default class CreateCasePage extends React.Component{
-    url = "https://3000-gray-worm-b5s136s0.ws-us09.gitpod.io/"
+    url = "https://3000-gray-worm-b5s136s0.ws-us08.gitpod.io/"
 
     state= {
         case:[],
@@ -14,7 +14,8 @@ export default class CreateCasePage extends React.Component{
         newCaseBrand: "",
         newCaseImage: "",
         taskBeingEdited: 0,
-        modifiedTaskName: ""
+        modifiedTaskName: "",
+        showPopup: false
     }
 
     updateFormField = (e) => {
@@ -48,7 +49,11 @@ export default class CreateCasePage extends React.Component{
             'newCaseDescription':'',
             'newCaseBrand':'',
             'newCaseImage':''
-        })
+        });
+
+        this.setState({
+            showPopup: false
+          });
     }
 
     displayCase = t => {
@@ -65,6 +70,32 @@ export default class CreateCasePage extends React.Component{
             </li>
         );
     };
+
+    renderPopup() {
+        if (this.state.showPopup) {
+          return (
+            <div className="popup-background">
+              <div className="popup">
+                <button onClick={this.hidePopup}>X</button>
+              </div>
+            </div>
+          );
+        } else {
+          return null;
+        }
+      }
+
+    displayPopup = () => {
+        this.setState({
+          showPopup: true
+        });
+      };
+    
+    hidePopup = () => {
+        this.setState({
+          showPopup: false
+        });
+      };
     
     render() {
         return (
@@ -100,7 +131,7 @@ export default class CreateCasePage extends React.Component{
                 <input
                     type="text"
                     name="newCaseBrand"
-                    value={this.state.newCasebrand}
+                    value={this.state.newCaseBrand}
                     onChange={this.updateFormField}
                 /><br/><br/>
 
@@ -113,7 +144,7 @@ export default class CreateCasePage extends React.Component{
                 /><br/><br/>
 
                 <label>Case description</label><br/>
-                <input class="description-textbox"
+                <textarea class="description-textbox"
                     type="text"
                     name="newCaseDescription"
                     value={this.state.newCaseDescription}
@@ -123,6 +154,7 @@ export default class CreateCasePage extends React.Component{
                 <button onClick={this.addCase}>Add</button>
                 </div><br/>
 
+                {this.renderPopup()}
                 </div>
             </React.Fragment>
         )

@@ -96,12 +96,7 @@ export default class CreatePage extends React.Component{
             {this.state.page === "CreateStorage" ? <CreateStoragePage/> : ""}
             {this.state.page === "CreateCooler" ? <CreateCoolerPage/> : ""} */}
             {this.state.page === "CreateCase" ? <CreateCasePage/> : ""}
-
-            <footer>
-            ✉
-            ☏
-            🖶
-            </footer>
+            
             </React.Fragment>
           );
     }

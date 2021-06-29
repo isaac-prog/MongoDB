@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import DisplayPage from "./display.js"
 
-export default class Listing extends React.Component {
+
+export default class DisplayPage extends React.Component {
  url = "https://3000-gray-worm-b5s136s0.ws-us08.gitpod.io/";
 
  state = {
@@ -10,7 +10,7 @@ export default class Listing extends React.Component {
    filterTypes: [],
    filterColors: [],
    filterBrands: [],
-   "page":"Case"
+   "page":"display"
  };
 
  updateFormField = (event) => {
@@ -19,23 +19,6 @@ export default class Listing extends React.Component {
   })
 }
 
-updateCheckBox= (event) =>{
-  let currentValues= this.state[event.target.name];
-  let modifiedValues;
-  if (!currentValues.includes(event.target.value))
-  {
-      modifiedValues = [...currentValues, event.target.value];
-  }
-  else{
-      modifiedValues = currentValues.filter((element)=>{
-          return element !== event.target.value;
-      })
-  }
-  
-  this.setState({
-      Case: modifiedValues
-  })
-}
 
 async componentDidMount() {
   let response = await axios.get(this.url + "case");
@@ -85,7 +68,7 @@ async componentDidMount() {
           <img class="image_center" src={require("./../images/computerCase.jpg").default}/>
        </div>
 
-       {/* table */}
+
 <div id="flex-container">
     <div class="result-container">
 
