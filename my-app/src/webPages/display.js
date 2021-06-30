@@ -10,8 +10,6 @@ export default class DisplayPage extends React.Component {
    filterTypes: [],
    filterColors: [],
    filterBrands: [],
-   '_id': '',
-   "page":"display"
  };
 
  updateFormField = (event) => {
@@ -144,9 +142,7 @@ deleteCase = async (task_id) => {
     </div>
     </div>
          )})}
-    
 
-    {this.state.page === "display" ? <DisplayPage/> : ""}
      </React.Fragment>
    );
  }

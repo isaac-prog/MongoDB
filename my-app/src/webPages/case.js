@@ -177,8 +177,6 @@ deleteCase = async (task_id) => {
         <button onClick={{}}>Filter</button>
      </div>
     </div>
-
-    {this.state.page === "display" ? <DisplayPage/> : ""}
      </React.Fragment>
    );
  }
