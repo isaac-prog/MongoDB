@@ -3,13 +3,14 @@ import axios from "axios";
 import DisplayPage from "./display.js"
 
 export default class Listing extends React.Component {
- url = "https://3000-gray-worm-b5s136s0.ws-us08.gitpod.io/";
+ url = "https://3000-tan-rook-y7i5rwec.ws-us08.gitpod.io/";
 
  state = {
    data: [],
    filterTypes: [],
    filterColors: [],
    filterBrands: [],
+   '_id': '',
    "page":"Case"
  };
 
@@ -78,6 +79,19 @@ async componentDidMount() {
   });
 }
 
+deleteCase = async task_id => {
+  let task_index = this.state.data.findIndex(t => t._id === task_id);
+  let response = await axios.post(this.url + "case/delete", task_index);
+  let modifiedTasks = [
+      ...this.state.data.slice(0, task_index),
+      ...this.state.data.slice(task_index + 1),
+      task_index
+  ];
+  this.setState({
+      data: modifiedTasks
+  });
+};
+
  render() {
    return (
      <React.Fragment>
@@ -96,6 +110,7 @@ async componentDidMount() {
             <th>Type</th> 
             <th>Color</th>
             <th>Brand</th>
+            <th>Delete?</th>
           </tr>
     {this.state.data.map(c => {
          return (
@@ -105,6 +120,10 @@ async componentDidMount() {
             <td>{c.type}</td>
             <td>{c.color}</td>
             <td>{c.brand}</td>
+            <td>
+              <button onClick={() => this.deleteCase(c._id)}>
+                Delete
+      </button></td>
           </tr>
           )
         })}

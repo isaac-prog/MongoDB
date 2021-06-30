@@ -3,7 +3,7 @@ import axios from 'axios'
 import './style.css'
 
 export default class CreateCasePage extends React.Component{
-    url = "https://3000-gray-worm-b5s136s0.ws-us08.gitpod.io/"
+    url = "https://3000-tan-rook-y7i5rwec.ws-us08.gitpod.io/"
 
     state= {
         case:[],
@@ -15,7 +15,7 @@ export default class CreateCasePage extends React.Component{
         newCaseImage: "",
         taskBeingEdited: 0,
         modifiedTaskName: "",
-        showPopup: false
+        newDone: false,
     }
 
     updateFormField = (e) => {
@@ -35,7 +35,8 @@ export default class CreateCasePage extends React.Component{
             'color':this.state.newCaseColor,
             'description':this.state.newCaseDescription,
             'brand':this.state.newCaseBrand,
-            'image':this.state.newCaseImage
+            'image':this.state.newCaseImage,
+            'done': this.state.newDone
         }
         console.log(newCase)
         let response = await axios.post(this.url + "case/create", newCase);
@@ -48,12 +49,10 @@ export default class CreateCasePage extends React.Component{
             'newCaseColor':'',
             'newCaseDescription':'',
             'newCaseBrand':'',
-            'newCaseImage':''
+            'newCaseImage':'',
+            'done': false
         });
-
-        this.setState({
-            showPopup: false
-          });
+        
     }
 
     displayCase = t => {
@@ -70,32 +69,6 @@ export default class CreateCasePage extends React.Component{
             </li>
         );
     };
-
-    renderPopup() {
-        if (this.state.showPopup) {
-          return (
-            <div className="popup-background">
-              <div className="popup">
-                <button onClick={this.hidePopup}>X</button>
-              </div>
-            </div>
-          );
-        } else {
-          return null;
-        }
-      }
-
-    displayPopup = () => {
-        this.setState({
-          showPopup: true
-        });
-      };
-    
-    hidePopup = () => {
-        this.setState({
-          showPopup: false
-        });
-      };
     
     render() {
         return (
@@ -153,8 +126,6 @@ export default class CreateCasePage extends React.Component{
 
                 <button onClick={this.addCase}>Add</button>
                 </div><br/>
-
-                {this.renderPopup()}
                 </div>
             </React.Fragment>
         )

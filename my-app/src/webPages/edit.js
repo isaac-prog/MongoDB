@@ -1,6 +1,6 @@
 import React from "react";
 import './style.css';
-import EditCasePage from "./eCase.js"
+import EditCasePage from "./ecase.js"
 
 export default class EditPage extends React.Component{
     state = {
