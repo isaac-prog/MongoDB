@@ -15,11 +15,13 @@ import CasePage from "./case.js"
 
 class MainPage extends React.Component{
     state = {
-        "page": "home"
+        "page": "home",
+        id: ""
       }
-      pageHandler = (name) => {
+      pageHandler = (name, id = "") => {
         this.setState({
-          page: name
+          page: name,
+          id: id
         })
       }
     render(){

@@ -79,9 +79,13 @@ async componentDidMount() {
   });
 }
 
-deleteCase = async task_id => {
+deleteCase = async (task_id) => {
   let task_index = this.state.data.findIndex(t => t._id === task_id);
-  let response = await axios.post(this.url + "case/delete", task_index);
+  let data = {
+    _id: task_id
+  }
+
+  let response = await axios.post(this.url + "case/delete", data);
   let modifiedTasks = [
       ...this.state.data.slice(0, task_index),
       ...this.state.data.slice(task_index + 1),
@@ -106,6 +110,7 @@ deleteCase = async task_id => {
     <table>
           <tr>
             <th></th>
+            <th>id</th>
             <th>Name</th>
             <th>Type</th> 
             <th>Color</th>
@@ -114,8 +119,9 @@ deleteCase = async task_id => {
           </tr>
     {this.state.data.map(c => {
          return (
-          <tr onClick={() => this.props.pageHandler("display")}>
+          <tr>
             <td><img class="result-images" src={c.image}/></td>
+            <td>{c._id}</td>
             <td>{c.name}</td>
             <td>{c.type}</td>
             <td>{c.color}</td>
@@ -123,7 +129,8 @@ deleteCase = async task_id => {
             <td>
               <button onClick={() => this.deleteCase(c._id)}>
                 Delete
-      </button></td>
+      </button>
+      <button  onClick={() => this.props.pageHandler("display", c._id)}> View</button></td>
           </tr>
           )
         })}

@@ -54,21 +54,6 @@ export default class CreateCasePage extends React.Component{
         });
         
     }
-
-    displayCase = t => {
-        return (
-            <li key={t.id}>
-                {t.type}
-                <input
-                    type="radio"
-                    value={t.type === true}
-                    onChange={() => {
-                        this.checkCase(t.id);
-                    }}
-                />
-            </li>
-        );
-    };
     
     render() {
         return (
