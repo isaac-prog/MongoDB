@@ -52,6 +52,7 @@ updateTask = async (task_id) => {
   }
   let response = await axios.post(this.url + "case/" + this.props.id + "/edit", newdata);
 }
+  
     
     render() {
         return (

@@ -126,8 +126,8 @@ deleteCase = async (task_id) => {
             <td>{c.brand}</td>
             <td>
             <button onClick={() => this.props.pageHandler("display", c._id)}> View</button>
+            <button onClick={() => this.props.pageHandler("edit", c._id)}> Edit</button></td>
             <button onClick={() => this.deleteCase(c._id)}>Delete</button>
-      <button  onClick={() => this.props.pageHandler("edit", c._id)}> Edit</button></td>
           </tr>
           )
         })}

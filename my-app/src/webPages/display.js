@@ -20,7 +20,7 @@ export default class DisplayPage extends React.Component {
    return (
      <React.Fragment>
         <div>
-       <div class="wallPaper">
+       <div class="display-image">
           <img class="image_center" src={this.state.data.image}/>
           <h1>{this.state.data.name}</h1>
        </div>
