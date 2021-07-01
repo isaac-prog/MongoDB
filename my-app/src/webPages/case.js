@@ -110,7 +110,6 @@ deleteCase = async (task_id) => {
     <table>
           <tr>
             <th></th>
-            <th>id</th>
             <th>Name</th>
             <th>Type</th> 
             <th>Color</th>
@@ -121,7 +120,6 @@ deleteCase = async (task_id) => {
          return (
           <tr>
             <td><img class="result-images" src={c.image}/></td>
-            <td>{c._id}</td>
             <td>{c.name}</td>
             <td>{c.type}</td>
             <td>{c.color}</td>

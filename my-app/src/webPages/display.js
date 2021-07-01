@@ -77,72 +77,49 @@ async componentDidMount() {
   });
 }
 
-deleteCase = async (task_id) => {
-  let task_index = this.state.data.findIndex(t => t._id === task_id);
-  let data = {
-    _id: task_id
-  }
-
-  let response = await axios.post(this.url + "case/delete", data);
-  let modifiedTasks = [
-      ...this.state.data.slice(0, task_index),
-      ...this.state.data.slice(task_index + 1),
-      task_index
-  ];
-  this.setState({
-      data: modifiedTasks
-  });
-};
-
  render() {
    return (
      <React.Fragment>
-         {this.state.data.map(c => {
-            return (
         <div>
        <div class="wallPaper">
-          <img class="image_center" src={c.image}/>
-          <h1>{c.name}</h1>
+          <img class="image_center" src={this.props.id.image}/>
+          <h1>{this.props.id.name}</h1>
        </div>
-
-        
 
        {/* table */}
-<div id="flex-container">
-    <div class="result-container">
+    <div id="flex-container">
 
+    <div class="result-container">
     <h4>Description</h4>
-    <div>{c.description}</div>
-       </div>
+    <div>{this.props.id.description}</div>
+    </div>
 
     <div class="filter-container">
 
       <h4>Case type</h4>
       <div class="filter-segments">
 	        <React.Fragment>
-                {c.type}
+                {this.props.id.type}
 	        </React.Fragment>
         </div>
 
         <h4>Case color</h4>
       <div class="filter-segments">
 	        <React.Fragment>
-                {c.color}
+                {this.props.id.color}
 	        </React.Fragment>
         </div>
 
         <h4>Case brand</h4>
       <div class="filter-segments">
 	        <React.Fragment>
-                {c.brand}
+                {this.props.id.brand}
 	        </React.Fragment>
         </div>
-        <button onClick={{}}>Filter</button>
-     </div>
-    </div>
-    </div>
-         )})}
 
+    </div>
+    </div>
+    </div>
      </React.Fragment>
    );
  }
