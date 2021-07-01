@@ -13,6 +13,7 @@ import StoragePage from "./storage.js"
 import CoolerPage from "./cooler.js"
 import CasePage from "./case.js";
 import DisplayPage from "./display.js"
+import EditCasePage from "./edit.js"
 
 class MainPage extends React.Component{
     state = {
@@ -125,6 +126,7 @@ class MainPage extends React.Component{
             {this.state.page === "Cooler" ? <CoolerPage/> : ""}
             {this.state.page === "Case" ? <CasePage pageHandler={this.pageHandler}/> : ""}
             {this.state.page === "display"? <DisplayPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "edit"? <EditCasePage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
             <footer>
             ✉
             ☏

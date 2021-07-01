@@ -1,103 +1,137 @@
-import React from "react";
-import './style.css';
-import EditCasePage from "./ecase.js"
+import React from 'react'
+import axios from 'axios'
+import './style.css'
 
-export default class EditPage extends React.Component{
-    state = {
-        "page": "edit"
-      }
-      pageHandler(name) {
+export default class EditCasePage extends React.Component{
+    url = "https://3000-tan-rook-y7i5rwec.ws-us08.gitpod.io/"
+
+    state= {
+        data: [],
+        editedCaseName: "",
+        editedCaseType: "",
+        editedCaseColor: "",
+        editedCaseDescription: "",
+        editedCaseBrand: "",
+        editedCaseImage: "",
+        taskBeingEdited: 0,
+        modifiedTaskName: "",
+        modifiedTaskType: "",
+        modifiedTaskColor: "",
+        modifiedTaskDescription: "",
+        modifiedTaskBrand: "",
+        modifiedTaskImage: "",
+    }
+
+    updateFormField = (e) => {
         this.setState({
-          page: name
+            [e.target.name]: e.target.value
         })
     }
 
-    render(){
-            return (
-                <React.Fragment> 
-    
-                {this.state.page == "editPage" ?
-                <React.Fragment>
+    async componentDidMount() {
+        let response = await axios.get(this.url + "case/" + this.props.id + "/edit");
+        this.setState({
+          data:response.data,
+          editedCaseName: this.state.data.name,
+          editedCaseType: this.state.data.type,
+          editedCaseColor: this.state.data.color,
+          editedCaseDescription: this.state.data.description,
+          editedCaseBrand: this.state.data.brand,
+          editedCaseImage: this.state.data.image,
+        })
+}
 
-                <div class="wallPaper">
-                    <img class="image_center" src={require("./../images/edit.jpg").default}/>
-                </div>
-                
-                <h1>Select a category to edit</h1>
-                <div class="parts-directory">
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("EditCPU")}>
-                <div class="flex-directory-body"><h4>CPU</h4>
-                <img class="directory-images" src={require("./../images/CPU.jpg").default} alt="CPU"/>
-                </div>
-                
-                </div>
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("EditGraphics")}>
-                <div class="flex-directory-body"><h4>Graphics</h4>
-                <img class="directory-images" src={require("./../images/Graphics.jpg").default} alt="Graphics"/>
-                </div>
-                
-                </div>
-          
-                <div class="flex-directory"onClick={() => this.pageHandler("EditRAM")}>
-                <div class="flex-directory-body"><h4>Memory</h4>
-                <img class="directory-images" src={require("./../images/ram.jpg").default} alt="RAM"/>
-                </div>
-      
-                </div>
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("EditMOBO")}>
-                <div class="flex-directory-body"><h4>Motherboard</h4>
-                <img class="directory-images" src={require("./../images/motherboard.jpg").default} alt="mobo"/>
-                </div>
-                
-                </div>
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("EditPSU")}>
-                <div class="flex-directory-body"><h4>PSU</h4>
-                <img class="directory-images" src={require("./../images/PSU.jpg").default} alt="PSU"/>
-                </div>
-                
-                </div>
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("Editstorage")}>
-                <div class="flex-directory-body"><h4>Storage</h4>
-                <img class="directory-images" src={require("./../images/ssd.jpg").default} alt="storage"/>
-                </div>
-                
-                </div>
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("EditCooler")}>
-                <div class="flex-directory-body"><h4>Cooler</h4>
-                <img class="directory-images" src={require("./../images/fan.jpg").default} alt="Cooler"/>
-                </div>
-                
-                </div>
-          
-                <div class="flex-directory" onClick={() => this.pageHandler("EditCase")}>
-                <div class="flex-directory-body"><h4>Case</h4>
-                <img class="directory-images" src={require("./../images/case.jpg").default} alt="Case"/>
-                </div>
-                </div>
-          
-                </div></React.Fragment> : ""
-                }
-          
-    
-                
-                {/* {this.state.page === "EditCPU" ? <EditCPUPage/> : ""}
-                {this.state.page === "EditGraphics" ? <EditGraphicsPage/> : ""}
-                {this.state.page === "EditRAM" ? <EditRAMPage/> : ""}
-                {this.state.page === "EditMOBO" ? <EditMOBOPage/> : ""}
-                {this.state.page === "EditPSU" ? <EditPSUPage/> : ""}
-                {this.state.page === "EditStorage" ? <EditStoragePage/> : ""}
-                {this.state.page === "EditCooler" ? <EditCoolerPage/> : ""} */}
-                {this.state.page === "EditCase" ? <EditCasePage/> : ""}
-                
-                </React.Fragment>
-              );
+updateTask = async (task_id) => {
+  this.updateTask(this.props.id);
+  this.setState({
+  taskBeingEdited: 0
+  })
+  let response = await axios.post(this.url + "case/" + this.props.id +"/edit");
+  let data = {
+  _id: task_id
+  }
+  let currentTask = this.state.data.filter(t => t.id === task_id)[0];
+  let modifiedTask = { ...currentTask };
+  modifiedTask.editedCaseName = this.state.modifiedTaskName;
+  modifiedTask.editedCaseType = this.state.modifiedTaskType;
+  modifiedTask.editedCaseColor = this.state.modifiedTaskColor;
+  modifiedTask.editedCaseDescription = this.state.modifiedTaskDescription;
+  modifiedTask.editedCasebrand = this.state.modifiedTaskBrand;
+  modifiedTask.editedCaseImage = this.state.modifiedTaskImage;
+  let modifiedTasksList = this.state.data.map(t => {
+    if (t.id !== task_id)
+    {
+      return t;
+  }
+    else {
+          return modifiedTask;
         }
+      });
+      this.setState({
+        data: modifiedTasksList
+      });
+    };
+    
+    render() {
+        return (
+            <React.Fragment>
+                <div class="create-edit-field">
+                <h2>Create edited case</h2>
+            <div>
+                <label>Case name</label><br/>
+                <input
+                    type="text"
+                    name="modifiedTaskName"
+                    value={this.state.modifiedTaskName}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case type</label><br/>
+                <input
+                    type="text"
+                    name="modifiedTaskType"
+                    value={this.state.modifiedTaskType}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+                
+                <label>Case Color</label><br/>
+                <input
+                    type="text"
+                    name="modifiedTaskColor"
+                    value={this.state.modifiedTaskColor}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case brand</label><br/>
+                <input
+                    type="text"
+                    name="modifiedTaskBrand"
+                    value={this.state.modifiedTaskBrand}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case image (URL ONLY)</label><br/>
+                <input
+                    type="text"
+                    name="modifiedTaskImage"
+                    value={this.state.modifiedTaskImage}
+                    onChange={this.updateFormField}
+                /><br/><br/>
+
+                <label>Case description</label><br/>
+                <textarea class="description-textbox"
+                    type="text"
+                    name="modifiedTaskDescription"
+                    value={this.state.modifiedTaskDescription}
+                    onChange={this.updateFormField}
+                    placeholder={this.state.data.description}
+                /><br/><br/>
+
+                <button onClick={this.updateTask}>Update Changes</button>
+                </div><br/>
+                </div>
+            </React.Fragment>
+        )
     }
-    
-    
+}
+

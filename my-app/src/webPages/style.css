@@ -106,6 +106,7 @@ a.active:hover:before {
 }
 .result-container {
   flex: 1;
+  border: solid white 1px;
 }
 
 .result-images{

@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import DisplayPage from "./display.js"
+
 
 export default class Listing extends React.Component {
  url = "https://3000-tan-rook-y7i5rwec.ws-us08.gitpod.io/";
@@ -114,7 +114,7 @@ deleteCase = async (task_id) => {
             <th>Type</th> 
             <th>Color</th>
             <th>Brand</th>
-            <th>Delete?</th>
+            <th>View/Edit/Delete</th>
           </tr>
     {this.state.data.map(c => {
          return (
@@ -125,10 +125,9 @@ deleteCase = async (task_id) => {
             <td>{c.color}</td>
             <td>{c.brand}</td>
             <td>
-              <button onClick={() => this.deleteCase(c._id)}>
-                Delete
-      </button>
-      <button  onClick={() => this.props.pageHandler("display", c._id)}> View</button></td>
+            <button onClick={() => this.props.pageHandler("display", c._id)}> View</button>
+            <button onClick={() => this.deleteCase(c._id)}>Delete</button>
+      <button  onClick={() => this.props.pageHandler("edit", c._id)}> Edit</button></td>
           </tr>
           )
         })}
