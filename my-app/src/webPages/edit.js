@@ -14,12 +14,7 @@ export default class EditCasePage extends React.Component{
         editedCaseBrand: "",
         editedCaseImage: "",
         taskBeingEdited: 0,
-        modifiedTaskName: "",
-        modifiedTaskType: "",
-        modifiedTaskColor: "",
-        modifiedTaskDescription: "",
-        modifiedTaskBrand: "",
-        modifiedTaskImage: "",
+        modifiedTaskName: ""
     }
 
     updateFormField = (e) => {
@@ -32,45 +27,31 @@ export default class EditCasePage extends React.Component{
         let response = await axios.get(this.url + "case/" + this.props.id + "/edit");
         this.setState({
           data:response.data,
-          editedCaseName: this.state.data.name,
-          editedCaseType: this.state.data.type,
-          editedCaseColor: this.state.data.color,
-          editedCaseDescription: this.state.data.description,
-          editedCaseBrand: this.state.data.brand,
-          editedCaseImage: this.state.data.image,
+          editedCaseName: response.data.name,
+          editedCaseType: response.data.type,
+          editedCaseColor: response.data.color,
+          editedCaseDescription:  response.data.description,
+          editedCaseBrand: response.data.brand,
+          editedCaseImage: response.data.image,
+        })
+        this.updateTask(this.props.id);
+        this.setState({
+        taskBeingEdited: 0
         })
 }
 
 updateTask = async (task_id) => {
-  this.updateTask(this.props.id);
-  this.setState({
-  taskBeingEdited: 0
-  })
-  let response = await axios.post(this.url + "case/" + this.props.id +"/edit");
-  let data = {
-  _id: task_id
+  let newdata = {
+    _id: task_id,
+    name: this.state.editedCaseName,
+    type: this.state.editedCaseType,
+    color: this.state.editedCaseColor,
+    description: this.state.editedCaseDescription,
+    brand: this.state.editedCaseBrand,
+    image: this.state.editedCaseImage
   }
-  let currentTask = this.state.data.filter(t => t.id === task_id)[0];
-  let modifiedTask = { ...currentTask };
-  modifiedTask.editedCaseName = this.state.modifiedTaskName;
-  modifiedTask.editedCaseType = this.state.modifiedTaskType;
-  modifiedTask.editedCaseColor = this.state.modifiedTaskColor;
-  modifiedTask.editedCaseDescription = this.state.modifiedTaskDescription;
-  modifiedTask.editedCasebrand = this.state.modifiedTaskBrand;
-  modifiedTask.editedCaseImage = this.state.modifiedTaskImage;
-  let modifiedTasksList = this.state.data.map(t => {
-    if (t.id !== task_id)
-    {
-      return t;
-  }
-    else {
-          return modifiedTask;
-        }
-      });
-      this.setState({
-        data: modifiedTasksList
-      });
-    };
+  let response = await axios.post(this.url + "case/" + this.props.id + "/edit", newdata);
+}
     
     render() {
         return (
@@ -81,55 +62,55 @@ updateTask = async (task_id) => {
                 <label>Case name</label><br/>
                 <input
                     type="text"
-                    name="modifiedTaskName"
-                    value={this.state.modifiedTaskName}
+                    name="editedCaseName"
+                    value={this.state.editedCaseName}
                     onChange={this.updateFormField}
                 /><br/><br/>
 
                 <label>Case type</label><br/>
                 <input
                     type="text"
-                    name="modifiedTaskType"
-                    value={this.state.modifiedTaskType}
+                    name="editedCaseType"
+                    value={this.state.editedCaseType}
                     onChange={this.updateFormField}
                 /><br/><br/>
                 
                 <label>Case Color</label><br/>
                 <input
                     type="text"
-                    name="modifiedTaskColor"
-                    value={this.state.modifiedTaskColor}
+                    name="editedCaseColor"
+                    value={this.state.editedCaseColor}
                     onChange={this.updateFormField}
                 /><br/><br/>
 
                 <label>Case brand</label><br/>
                 <input
                     type="text"
-                    name="modifiedTaskBrand"
-                    value={this.state.modifiedTaskBrand}
+                    name="editedCaseBrand"
+                    value={this.state.editedCaseBrand}
                     onChange={this.updateFormField}
                 /><br/><br/>
 
                 <label>Case image (URL ONLY)</label><br/>
                 <input
                     type="text"
-                    name="modifiedTaskImage"
-                    value={this.state.modifiedTaskImage}
+                    name="editedCaseImage"
+                    value={this.state.editedCaseImage}
                     onChange={this.updateFormField}
                 /><br/><br/>
 
                 <label>Case description</label><br/>
                 <textarea class="description-textbox"
                     type="text"
-                    name="modifiedTaskDescription"
-                    value={this.state.modifiedTaskDescription}
-                    onChange={this.updateFormField}
-                    placeholder={this.state.data.description}
-                /><br/><br/>
+                    name="editedCaseDescription"
+                    value={this.state.editedCaseDescription}
+                    onChange={this.updateFormField}/>
+                    <br/><br/>
 
-                <button onClick={this.updateTask}>Update Changes</button>
+                <button onClick={() => this.updateTask(this.props.id)}>Update Changes</button>
                 </div><br/>
                 </div>
+                
             </React.Fragment>
         )
     }
