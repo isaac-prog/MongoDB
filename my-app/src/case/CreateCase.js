@@ -4,7 +4,6 @@ import './../webPages/style.css'
 
 export default class CreateCasePage extends React.Component{
     url = "https://tgc-project2.herokuapp.com/"
-
     state= {
         case:[],
         newCaseName: "",
@@ -52,7 +51,6 @@ export default class CreateCasePage extends React.Component{
             'newCaseImage':'',
             'done': false
         });
-        
     }
     
     render() {
