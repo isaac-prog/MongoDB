@@ -11,8 +11,8 @@ import PSUPage from "./psu.js"
 import StoragePage from "./storage.js"
 import CoolerPage from "./cooler.js"
 import CasePage from "./../case/case.js";
-import DisplayPage from "./../case/display.js"
-import EditCasePage from "./../case/edit.js"
+import DisplayCasePage from "../case/displayCase.js"
+import EditCasePage from "../case/editCase.js"
 
 class MainPage extends React.Component{
     state = {
@@ -114,16 +114,22 @@ class MainPage extends React.Component{
       
 
             {this.state.page === "create" ? <CreatePage /> : ""}
-            {this.state.page === "CPU" ? <CPUPage/> : ""}
             {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
             {this.state.page === "RAM" ? <RAMPage/> : ""}
             {this.state.page === "MOBO" ? <MOBOPage/> : ""}
             {this.state.page === "PSU" ? <PSUPage/> : ""}
             {this.state.page === "Storage" ? <StoragePage/> : ""}
             {this.state.page === "Cooler" ? <CoolerPage/> : ""}
+
+            {this.state.page === "CreateCpu" ? <CreateCpuPage/> : ""}
+            {this.state.page === "CPU" ? <CpuPage pageHandler={this.pageHandler}/> : ""}
+            {this.state.page === "displaycpu"? <DisplayCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "editcpu"? <EditCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+
+            {this.state.page === "CreateCase" ? <CreateCasePage/> : ""}
             {this.state.page === "Case" ? <CasePage pageHandler={this.pageHandler}/> : ""}
-            {this.state.page === "display"? <DisplayPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
-            {this.state.page === "edit"? <EditCasePage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "displaycase"? <DisplayCasePage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "editcase"? <EditCasePage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
             <footer>
             ✉
             ☏

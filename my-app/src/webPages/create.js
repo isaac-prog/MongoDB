@@ -95,8 +95,6 @@ export default class CreatePage extends React.Component{
             {this.state.page === "CreatePSU" ? <CreatePSUPage/> : ""}
             {this.state.page === "CreateStorage" ? <CreateStoragePage/> : ""}
             {this.state.page === "CreateCooler" ? <CreateCoolerPage/> : ""} */}
-            {this.state.page === "CreateCase" ? <CreateCasePage/> : ""}
-            
             </React.Fragment>
           );
     }
