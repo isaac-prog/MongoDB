@@ -1,5 +1,5 @@
 import React from "react";
-import './style.css'
+import '../webPages/style.css'
 // import CreateCPUPage from "./CreateCpu.js"
 // import CreateGraphicsPage from "./CreateGraphics.js"
 // import CreateRAMPage from "./CreateRam.js"
@@ -7,7 +7,7 @@ import './style.css'
 // import CreatePSUPage from "./CreatePsu.js"
 // import CreateStoragePage from "./CreateStorage.js"
 // import CreateCoolerPage from "./CreateCooler.js"
-import CreateCasePage from "./CreateCase.js"
+import CreateCasePage from "../case/CreateCase.js"
 
 export default class CreatePage extends React.Component{
     state = {

@@ -1,9 +1,8 @@
 import React from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './style.css'
+import '../webPages/style.css'
 import CreatePage from "./create.js"
-import EditPage from "./edit.js"
 import CPUPage from "./cpu.js"
 import GraphicsPage from "./graphics.js"
 import RAMPage from "./ram.js"
@@ -11,9 +10,9 @@ import MOBOPage from "./mobo.js"
 import PSUPage from "./psu.js"
 import StoragePage from "./storage.js"
 import CoolerPage from "./cooler.js"
-import CasePage from "./case.js";
-import DisplayPage from "./display.js"
-import EditCasePage from "./edit.js"
+import CasePage from "./../case/case.js";
+import DisplayPage from "./../case/display.js"
+import EditCasePage from "./../case/edit.js"
 
 class MainPage extends React.Component{
     state = {
@@ -34,7 +33,6 @@ class MainPage extends React.Component{
                 <ul class="nav-container">
                 <li onClick={() => this.pageHandler("home")}><a class="active">Home</a></li>
                 <li onClick={() => this.pageHandler("create")}><a class="active">Add Content</a></li>
-                <li onClick={() => this.pageHandler("edit")}><a class="active">Edit Content</a></li>
                 </ul>
                 </div>
 
@@ -116,7 +114,6 @@ class MainPage extends React.Component{
       
 
             {this.state.page === "create" ? <CreatePage /> : ""}
-            {this.state.page === "Edit" ? <EditPage /> : ""}
             {this.state.page === "CPU" ? <CPUPage/> : ""}
             {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
             {this.state.page === "RAM" ? <RAMPage/> : ""}

@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import './style.css'
+import './../webPages/style.css'
 
 export default class CreateCasePage extends React.Component{
-    url = "https://3000-tan-rook-y7i5rwec.ws-us08.gitpod.io/"
+    url = "https://tgc-project2.herokuapp.com/"
 
     state= {
         case:[],
