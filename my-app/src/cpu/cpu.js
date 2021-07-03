@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 
-export default class Listing extends React.Component {
+export default class Cpupage extends React.Component {
  url = "https://tgc-project2.herokuapp.com/";
 
  state = {

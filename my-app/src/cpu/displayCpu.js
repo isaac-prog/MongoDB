@@ -57,6 +57,12 @@ export default class DisplayPage extends React.Component {
         </div>
 
     </div>
+
+    <div class="comment-container">
+      <div class="new-comment">
+
+      </div>
+      </div>
     </div>
     </div>
      </React.Fragment>

@@ -12,6 +12,7 @@ export default class CasePage extends React.Component {
    filterBrands: [],
    '_id': '',
    "page":"Case"
+   
  };
 
  updateFormField = (event) => {
@@ -20,23 +21,44 @@ export default class CasePage extends React.Component {
   })
 }
 
-updateCheckBox= (event) =>{
-  let currentValues= this.state[event.target.name];
-  let modifiedValues;
-  if (!currentValues.includes(event.target.value))
-  {
-      modifiedValues = [...currentValues, event.target.value];
-  }
-  else{
-      modifiedValues = currentValues.filter((element)=>{
-          return element !== event.target.value;
-      })
-  }
+// updateCheckBox= (event) =>{
   
+//   let currentValues= this.state[event.target.name];
+//   let modifiedValues;
+//   if (!currentValues.includes(event.target.value))
+//   {
+//       console.log('1',modifiedValues)
+//       modifiedValues = [...currentValues, event.target.value];
+//   }
+//   else{
+//       modifiedValues = currentValues.filter((element)=>{
+//         console.log('2',element)
+//           return element !== event.target.value;
+//       })
+//   }  
+//   this.setState({
+//       Case: modifiedValues
+//   })
+// }
+
+checkTask = (task_id) => {
+  let currentTask = this.state.data.filter(t => t.id === task_id)[0];
+  let modifiedTask = { ...currentTask };
+  modifiedTask.done = !currentTask.done;
+  let modifiedTasksList = this.state.data.map(t => {
+      if (t.id !== task_id) {
+          console.log(t, "t")
+          return t;
+      } else {
+          console.log(modifiedTask, "modified task")
+          return modifiedTask;
+      }
+  })
   this.setState({
-      Case: modifiedValues
+      'data': modifiedTasksList
   })
 }
+
 
 async componentDidMount() {
   let response = await axios.get(this.url + "case");
@@ -143,7 +165,12 @@ deleteCase = async (task_id) => {
       {this.state.filterTypes.map((f)=>(
 	        <React.Fragment>
 		         <input type="checkbox" 
-			        name="case"/>
+			        name="case"
+              value={f.name === true}
+                    onChange={() => {
+                        this.checkTask(f.id)
+                    }}
+                    />
               <span>{f}</span><br/>
 	        </React.Fragment>
           ))}

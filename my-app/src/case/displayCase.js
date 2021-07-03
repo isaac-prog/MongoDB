@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 
-export default class DisplayPage extends React.Component {
+export default class DisplayCasePage extends React.Component {
  url = "https://tgc-project2.herokuapp.com/";
 
  state = {
@@ -57,6 +57,12 @@ export default class DisplayPage extends React.Component {
         </div>
 
     </div>
+
+    <div class="comment-container">
+      <div class="new-comment">
+
+      </div>
+      </div>
     </div>
     </div>
      </React.Fragment>

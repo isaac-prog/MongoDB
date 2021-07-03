@@ -10,6 +10,7 @@ import MOBOPage from "./mobo.js"
 import PSUPage from "./psu.js"
 import StoragePage from "./storage.js"
 import CoolerPage from "./cooler.js"
+import CreateCasePage from "../case/CreateCase";
 import CasePage from "./../case/case.js";
 import DisplayCasePage from "../case/displayCase.js"
 import EditCasePage from "../case/editCase.js"
@@ -121,10 +122,10 @@ class MainPage extends React.Component{
             {this.state.page === "Storage" ? <StoragePage/> : ""}
             {this.state.page === "Cooler" ? <CoolerPage/> : ""}
 
-            {this.state.page === "CreateCpu" ? <CreateCpuPage/> : ""}
+            {/* {this.state.page === "CreateCpu" ? <CreateCpuPage/> : ""}
             {this.state.page === "CPU" ? <CpuPage pageHandler={this.pageHandler}/> : ""}
             {this.state.page === "displaycpu"? <DisplayCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
-            {this.state.page === "editcpu"? <EditCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "editcpu"? <EditCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""} */}
 
             {this.state.page === "CreateCase" ? <CreateCasePage/> : ""}
             {this.state.page === "Case" ? <CasePage pageHandler={this.pageHandler}/> : ""}
