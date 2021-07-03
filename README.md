@@ -1,59 +1,125 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+## About PC parts
 
-Welcome isaac-prog,
+PcParts is a website that allows user to view, upload and edit pc parts information to the database. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
 
-## Gitpod Reminders
+## UI/UX
+* User stories:
+A website to collect all of the pc parts out there to enable pc enthusiast to search for pc parts. 
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+* link to the wireframe: https://app.moqups.com/mLztc8RnHf/view
 
-`python3 -m http.server`
+* Acceptance criteria:
+ Users can edit, create and view pc parts
 
-A blue button should appear to click: _Make Public_,
+* 5 planes of the UX
+1. Surface: The visual design was set to a dark theme, in line with the dark side of young gaming entuhsiast as they are usually the ones that will build custom PCs.
 
-Another blue button should appear to click: _Open Browser_.
+2. Skeleton design: The interface was set to a simple yet modern feel to the webpage. As youth has a shorter attention span, the use of less words and more pictorial form will keep them engaged for a longer time. As for the navigation design, all materials can be achieved within 3 clicks, so that the targeted audience will spend a longer time interacting with the website.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+3. Structure: Website is structured to cater to faster reach for entry, viewing and editing of database
 
-A blue button should appear to click: _Make Public_,
+4. scope: The functional specs of being to manipulate with the data enables faster updates of information to meet the user's need of getting all resources within a website.
 
-Another blue button should appear to click: _Open Browser_.
+5.Strategy: The purpose of the website is to reduce the need for users to search various websites for individual parts, when pc parts are consolidated to a website.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Features
+The website is targeted to youths who wishes to search for the rigs of their dream build to search for their information within three clicks.
 
-To log into the Heroku toolbelt CLI:
+## Technologies used
+1. [Font awesome](https://www.mongodb.com/ "MongoDB")
+   MongoDB is used as a database to store pc parts and its information
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+## Testing
+Use the nav bar to navigate around the webpage: "Home"/"logo" brings you back to the mainpage, "add content" brings the user to the add content section, where the user can add a new content to the website database and click on the add button to submit his content
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidently make it public then you can create a new one with _Regenerate API Key_.
+click on any of the desired pc part category you wish to view, followed by clicking on the 'view' button to view a more      comprehensive page of that specific part. 
 
-## Updates Since The Instructional Video
+Alternatively, the delete button will delete the specific item from the database.
+The edit button will enable user to edit the content of that particular item. Click on the update button once the user is done updating and return to the home page using the nav bar.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+## limitations
+Currently, the filter function is not working due to bug issues. 
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Deployment
+Using heroku for Express, follow the steps:
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+Step 1| Log into Heroku
+At the terminal, log in to heroku with:
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+heroku login -i
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+Enter your username and password.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+Step 2| Create the Heroku App
+Once you have logged in, create a new Heroku app with the following commands at the terminal:
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+heroku create <app-name>
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+Step 3| Define Procfile
+The Procfile executes a command when Heroku needs to run our server. Create one in the same directory as index.js and name it as Procfile (the first alphabet must be capitalized, and there is no extension).
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+Add the following line to the Procfile:
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+web: node index.js
 
----
 
-Happy coding!
+Make sure to save the Procfile
+
+Step 4| Add a start script to package.json
+
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+
+
+Step 5| Change the port that we are using
+
+Change the 3000 in app.listen to process.env.PORT
+
+Step 6| Push to Heroku
+
+Make sure you have a .gitignore file, and it must have node_modules, sessions/ and .env included,
+
+git add .
+git commit -m "Deployment to Heroku"
+git push heroku master
+
+Step 7| Setup the config variables
+We need to duplicate the content of the .env file inside the config variables section of Heroku.
+
+Go to Heroku and look for the app you just deployed. Then click on Settings:
+
+Next, click on Reveal Config Vars:
+
+After which, add in MONGO_URL, and the connection URL from your .env file:
+
+Step 7| Run the app
+From your Heroku project panel, click on the button that says Open App. Test if your app is working.
+
+
+For React, do the following to deploy it:
+
+Deploy by uploading the build files
+
+Step 1 | Check your terminal's working directory
+In your terminal, make sure the current working directory can list the package.json file for your React application.
+
+Step 2 | Build your react application
+In the terminal, type in:
+
+yarn build
+
+You should see some messages from React indicating that the build has finished
+
+Step 3 | Download the build folder
+You should see a build folder. Download it by right clicking on the folder and select "Download…". 
+
+Note: There will be a number of pop-ups asking you to grant permissions. Click "Yes" each time.
+
+Step 4 | Upload to Netlify
+Back at Netlify, click on the "Sites", then scroll to the bottom of the page. There will be a box for you to upload the folder. Drag the entire folder from your computer to the box. Netlify will inform you when the process is complete.
+
+Deploy by linking to Github
+Back at the "Sites" page for Netlify, click on "New Site from Github", and select the Github repository. 
