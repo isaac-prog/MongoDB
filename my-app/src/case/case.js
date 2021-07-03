@@ -41,12 +41,12 @@ export default class CasePage extends React.Component {
 //   })
 // }
 
-checkTask = (task_id) => {
-  let currentTask = this.state.data.filter(t => t.id === task_id)[0];
+checkTask = (name) => {
+  let currentTask = this.state.data.filter(t => t.name === name);
   let modifiedTask = { ...currentTask };
   modifiedTask.done = !currentTask.done;
   let modifiedTasksList = this.state.data.map(t => {
-      if (t.id !== task_id) {
+      if (t.name !== name) {
           console.log(t, "t")
           return t;
       } else {
@@ -168,7 +168,7 @@ deleteCase = async (task_id) => {
 			        name="case"
               value={f.name === true}
                     onChange={() => {
-                        this.checkTask(f.id)
+                        this.checkTask(this.name)
                     }}
                     />
               <span>{f}</span><br/>
