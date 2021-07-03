@@ -2,17 +2,16 @@ import React from "react";
 import axios from "axios";
 
 
-export default class CpuPage extends React.Component {
+export default class CoolerPage extends React.Component {
  url = "https://tgc-project2.herokuapp.com/";
 
  state = {
    data: [],
-   filterclockspeed: [],
-   filterOverclockspeed: [],
+   filterTypes: [],
+   filternoise_level: [],
    filterBrands: [],
-   filterCore: [],
    '_id': '',
-   "page":"Cpu"
+   "page":"Cooler"
    
  };
 
@@ -38,7 +37,7 @@ export default class CpuPage extends React.Component {
 //       })
 //   }  
 //   this.setState({
-//       Case: modifiedValues
+//       Cooler: modifiedValues
 //   })
 // }
 checkTask = (name) => {
@@ -66,32 +65,32 @@ checkTask = (name) => {
 
 
 async componentDidMount() {
-  let response = await axios.get(this.url + "cpu");
+  let response = await axios.get(this.url + "cooler");
 
-  let clockspeed = [];
+  console.log(response.data);
+  let types = [];
   for(let data of response.data){
-    if(!clockspeed.includes(data.clockspeed)){
-      clockspeed.push(data.clockspeed);
+    if(!types.includes(data.type)){
+      types.push(data.type);
     }
   }
 
   this.setState({
     data: response.data,
-    filterclockspeed: clockspeed
+    filterTypes: types
   });
 
-  let overclockspeed = [];
+  let noise_level = [];
   for(let data of response.data){
-    if(!overclockspeed.includes(data.over_clockspeed)){
-      overclockspeed.push(data.over_clockspeed);
+    if(!noise_level.includes(data.color)){
+      noise_level.push(data.color);
     }
   }
 
   this.setState({
     data: response.data,
-    filterOverclockspeed: overclockspeed
+    filternoise_level: noise_level
   });
-  
 
   let brands = [];
   for(let data of response.data){
@@ -104,29 +103,15 @@ async componentDidMount() {
     data: response.data,
     filterBrands: brands
   });
-
-  let core = [];
-  for(let data of response.data){
-    if(!core.includes(data.core)){
-      core.push(data.core);
-    }
-  }
-
-  this.setState({
-    data: response.data,
-    filterBrands: core
-  });
-
-  
 }
 
-deleteCpu = async (task_id) => {
+deleteCooler = async (task_id) => {
   let task_index = this.state.data.findIndex(t => t._id === task_id);
   let data = {
     _id: task_id
   }
 
-  let response = await axios.post(this.url + "cpu/delete", data);
+  let response = await axios.post(this.url + "cooler/delete", data);
   let modifiedTasks = [
       ...this.state.data.slice(0, task_index),
       ...this.state.data.slice(task_index + 1),
@@ -152,10 +137,9 @@ deleteCpu = async (task_id) => {
           <tr>
             <th></th>
             <th>Name</th>
-            <th>Brand</th> 
-            <th>Clockspeed</th>
-            <th>over_clockspeed</th>
-            <th>Core</th>
+            <th>Type</th> 
+            <th>Color</th>
+            <th>Brand</th>
             <th>View/Edit/Delete</th>
           </tr>
     {this.state.data.map(c => {
@@ -163,24 +147,63 @@ deleteCpu = async (task_id) => {
           <tr>
             <td><img class="result-images" src={c.image}/></td>
             <td>{c.name}</td>
+            <td>{c.type}</td>
+            <td>{c.color}</td>
             <td>{c.brand}</td>
-            <td>{c.clockspeed}</td>
-            <td>{c.over_clockspeed}</td>
-            <td>{c.core}</td>
-
             <td>
             <button onClick={() => this.props.pageHandler("display", c._id)}> View</button>
             <button onClick={() => this.props.pageHandler("edit", c._id)}> Edit</button>
-            <button onClick={() => this.deleteCpu(c._id)}>Delete</button></td>
+            <button onClick={() => this.deleteCooler(c._id)}>Delete</button></td>
           </tr>
           )
         })}
         </table>
        </div>
 
-       
+       {/* filter box */}
+    <div class="filter-container">
+      <h3>Filters</h3>
+
+      <h4>Cooler type</h4>
+      <div class="filter-segments">
+      {this.state.filterTypes.map((f)=>(
+	        <React.Fragment>
+		         <input type="checkbox" 
+			        name="cooler"
+              onChange={() => {
+              this.checkTask(f.type)
+                    }}
+                    />
+              <span>{f}</span><br/>
+	        </React.Fragment>
+          ))}
+        </div>
+
+        <h4>noise_level</h4>
+        <div class="filter-segments">
+      {this.state.filternoise_level.map((f)=>(
+	        <React.Fragment>
+		         <input type="checkbox" 
+			        name="color"/>
+              <span>{f}</span><br/>
+	        </React.Fragment>
+          ))}
+        </div>
+
+        <h4>Brands</h4>
+        <div class="filter-segments">
+      {this.state.filterBrands.map((f)=>(
+	        <React.Fragment>
+		         <input type="checkbox" 
+			        name="brand"/>
+              <span>{f}</span><br/>
+	        </React.Fragment>
+          ))}
+        </div>
+
+        <button onClick={{}}>Filter</button>
      </div>
-    
+    </div>
      </React.Fragment>
    );
  }

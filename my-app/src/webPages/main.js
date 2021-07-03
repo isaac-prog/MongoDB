@@ -3,17 +3,21 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../webPages/style.css'
 import CreatePage from "./create.js"
-import CPUPage from "./cpu.js"
-import GraphicsPage from "./graphics.js"
-import RAMPage from "./ram.js"
-import MOBOPage from "./mobo.js"
-import PSUPage from "./psu.js"
-import StoragePage from "./storage.js"
-import CoolerPage from "./cooler.js"
+
 import CreateCasePage from "../case/CreateCase";
 import CasePage from "./../case/case.js";
 import DisplayCasePage from "../case/displayCase.js"
 import EditCasePage from "../case/editCase.js"
+
+import CreateCpuPage from "../cpu/CreateCpu";
+import CpuPage from "./../cpu/cpu.js";
+import DisplayCpuPage from "../cpu/displayCpu.js"
+import EditCpuPage from "../cpu/editCpu.js"
+
+import CreateCoolerPage from "../cooler/CreateCooler";
+import CoolerPage from "./../cooler/cooler.js";
+import DisplayCoolerPage from "../cooler/displayCooler.js"
+import EditCoolerPage from "../cooler/editCooler.js"
 
 class MainPage extends React.Component{
     state = {
@@ -114,13 +118,13 @@ class MainPage extends React.Component{
             }
       
 
-            {this.state.page === "create" ? <CreatePage /> : ""}
+            {/* {this.state.page === "create" ? <CreatePage /> : ""}
             {this.state.page === "Graphics" ? <GraphicsPage/> : ""}
             {this.state.page === "RAM" ? <RAMPage/> : ""}
             {this.state.page === "MOBO" ? <MOBOPage/> : ""}
             {this.state.page === "PSU" ? <PSUPage/> : ""}
             {this.state.page === "Storage" ? <StoragePage/> : ""}
-            {this.state.page === "Cooler" ? <CoolerPage/> : ""}
+            {this.state.page === "Cooler" ? <CoolerPage/> : ""} */}
 
             {/* {this.state.page === "CreateCpu" ? <CreateCpuPage/> : ""}
             {this.state.page === "CPU" ? <CpuPage pageHandler={this.pageHandler}/> : ""}
@@ -131,6 +135,16 @@ class MainPage extends React.Component{
             {this.state.page === "Case" ? <CasePage pageHandler={this.pageHandler}/> : ""}
             {this.state.page === "displaycase"? <DisplayCasePage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
             {this.state.page === "editcase"? <EditCasePage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+
+            {this.state.page === "CreateCpu" ? <CreateCpuPage/> : ""}
+            {this.state.page === "Cpu" ? <CpuPage pageHandler={this.pageHandler}/> : ""}
+            {this.state.page === "displaycpu"? <DisplayCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "editcpu"? <EditCpuPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+
+            {this.state.page === "CreateCooler" ? <CreateCoolerPage/> : ""}
+            {this.state.page === "Cooler" ? <CoolerPage pageHandler={this.pageHandler}/> : ""}
+            {this.state.page === "displaycooler"? <DisplayCoolerPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
+            {this.state.page === "editcooler"? <EditCoolerPage pageHandler={this.pageHandler} id={this.state.id}/> : ""}
             <footer>
             ✉
             ☏

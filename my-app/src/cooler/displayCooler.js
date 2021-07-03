@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 
-export default class DisplayCpuPage extends React.Component {
+export default class DisplayCasePage extends React.Component {
  url = "https://tgc-project2.herokuapp.com/";
 
  state = {
@@ -10,7 +10,7 @@ export default class DisplayCpuPage extends React.Component {
  };
 
  async componentDidMount() {
-  let response = await axios.get(this.url + "cpu/" + this.props.id);
+  let response = await axios.get(this.url + "case/" + this.props.id);
   this.setState({
     data: response.data
   })
@@ -35,21 +35,21 @@ export default class DisplayCpuPage extends React.Component {
 
     <div class="filter-container">
 
-      <h4>Cpu type</h4>
+      <h4>Case type</h4>
       <div class="filter-segments">
 	        <React.Fragment>
                 {this.state.data.type}
 	        </React.Fragment>
         </div>
 
-        <h4>Cpu color</h4>
+        <h4>Case color</h4>
       <div class="filter-segments">
 	        <React.Fragment>
                 {this.state.data.color}
 	        </React.Fragment>
         </div>
 
-        <h4>Cpu brand</h4>
+        <h4>Case brand</h4>
       <div class="filter-segments">
 	        <React.Fragment>
                 {this.state.data.brand}

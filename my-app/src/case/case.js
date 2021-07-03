@@ -40,13 +40,15 @@ export default class CasePage extends React.Component {
 //       Case: modifiedValues
 //   })
 // }
-
 checkTask = (name) => {
-  let currentTask = this.state.data.filter(t => t.name === name);
+  let currentTask = this.state.data.filter(t => t.type === name);
+  console.log(currentTask)
   let modifiedTask = { ...currentTask };
   modifiedTask.done = !currentTask.done;
+  console.log(modifiedTask);
+  console.log(currentTask)
   let modifiedTasksList = this.state.data.map(t => {
-      if (t.name !== name) {
+      if (t.type !== name) {
           console.log(t, "t")
           return t;
       } else {
@@ -57,6 +59,8 @@ checkTask = (name) => {
   this.setState({
       'data': modifiedTasksList
   })
+  
+  console.log(this.state.data)
 }
 
 
@@ -166,9 +170,8 @@ deleteCase = async (task_id) => {
 	        <React.Fragment>
 		         <input type="checkbox" 
 			        name="case"
-              value={f.name === true}
-                    onChange={() => {
-                        this.checkTask(this.name)
+              onChange={() => {
+              this.checkTask(f.type)
                     }}
                     />
               <span>{f}</span><br/>
